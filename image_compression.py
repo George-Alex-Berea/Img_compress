@@ -7,7 +7,7 @@ def load_color_image(path):
     image = Image.open(path).convert('RGB')
     mat_img = np.array(image)
     size = mat_img.shape
-    k = min(size[0], size[1]) // 40  # Set k to be 1/40th of the smaller dimension
+    k = min(size[0], size[1]) // 40  # Set k to be 1/40th of the smaller dimension, modify at will
     return (mat_img, k)
 
 def svd_compress_color(image_array, k):
@@ -26,9 +26,8 @@ def svd_compress_color(image_array, k):
 def save_image(matrix, output_path):
     Image.fromarray(matrix).save(output_path)
 
-# === Example usage ===
-image_path = 'Cec.jpg'        # Replace with your input file
-output_path = 'compressedCec.jpg'
+image_path = 'image_name'        # Replace with your input file
+output_path = 'output_name'
 
 (original ,k) = load_color_image(image_path)
 compressed = svd_compress_color(original, k)
